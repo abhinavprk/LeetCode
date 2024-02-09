@@ -1,4 +1,4 @@
-package add_two_numbers;
+package lc2_add_two_numbers;
 
 import java.util.ArrayList;
 import java.util.List;
