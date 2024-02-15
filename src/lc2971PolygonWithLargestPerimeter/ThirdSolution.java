@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * https://leetcode.com/problems/find-polygon-with-the-largest-perimeter/description
  */
+
 public class ThirdSolution {
     public static void main(String[] args) {
        int[] input = {1, 12, 1, 2, 5, 50, 3};
