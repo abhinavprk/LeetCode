@@ -1,7 +1,6 @@
 package lc1642FurthestBuildingReach;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * https://leetcode.com/problems/furthest-building-you-can-reach/description/
@@ -16,27 +15,42 @@ public class ThirdSolution {
     }
 
     private static int furthestReachable(int[] heights, int bricks, int ladders) {
-        // Add heights in the heap where the highest number of bricks added will be of max priority and will be removed first
-        //This way the bricks will be allocated to the lowest possible heights only.
-        Queue<Integer> brickAllocations = new PriorityQueue<>((a,b)->(b-a));
-        for (int building = 0; building < heights.length - 1; building++) {
-            int climb= heights[building+1] - heights[building];
-            if(climb > 0){
-                //When climb is greater than 0 then only it is needed to add bricks or ladders
-                //Add bricks first
-                brickAllocations.add(climb);
-                bricks = bricks - climb;
-                //If bricks are negative and ladders are as well zero, no more jump possible
-                if(bricks < 0 && ladders == 0){
-                    return building;
-                } else if(bricks < 0) {
-                    //If ladders still available, use them and retrieve bricks so that they can be used for next jump if possible
-                   bricks = bricks + brickAllocations.remove();
-                   ladders--;
-                }
+        int beg = 0;
+        int end = heights.length - 1;
+        while (beg < end) {
+            int center = beg + (end - beg + 1) / 2;
+            if (isBuildingReachable(center, heights, bricks, ladders)) {
+                beg = center;
+            } else {
+                end = center - 1;
             }
         }
-        //If we are here, this means that all the buildings have been reached
-        return heights.length-1;
+        return end;
+    }
+
+    private static boolean isBuildingReachable(int index, int[] heights, int bricks, int ladders){
+        List<Integer> climbs = new LinkedList<>();
+        //Add all heights to jum in the list
+        for (int building = 0; building <= index - 1; building++) {
+            int height = heights[building + 1] - heights[building];
+            if(height > 0){
+                climbs.add(height);
+            }
+        }
+        //Sort the list of climbs in ascending order
+        Collections.sort(climbs);
+        for (int height : climbs){
+            //For every climb use bricks first
+            bricks = bricks - height;
+            if(bricks < 0 && ladders != 0){
+                //if bricks are not sufficient and ladders are available, use ladder
+                ladders--;
+            } else if(bricks < 0){
+                //If bricks are not sufficient and ladders are not there, the building can't be reached
+                return false;
+            }
+        }
+        //If we are able to traverse through all the climbs, the building is reachable.
+        return true;
     }
 }
