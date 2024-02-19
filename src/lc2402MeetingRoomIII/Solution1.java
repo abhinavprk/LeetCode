@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * https://leetcode.com/problems/meeting-rooms-iii/description/
+ */
 public class Solution1 {
     public static void main(String[] args) {
         int noOfRooms = 2;
