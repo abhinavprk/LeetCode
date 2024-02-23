@@ -6,6 +6,7 @@ You are also given three integers src, dst, and k, return the cheapest price fro
 
 
 
+
 Example 1:
 
 
@@ -31,6 +32,7 @@ Output: 500
 Explanation:
 The graph is shown above.
 The optimal path with no stops from city 0 to 2 is marked in red and has cost 500.
+
 
 
 Constraints:

@@ -1,8 +1,8 @@
 package lc787CheapestFlightWithinKStops;
 
-public class Solution1 {
 
-    //TODO
+public class Solution1 {
+   //TODO
     public static void main(String[] args) {
 
         int n = 4;
