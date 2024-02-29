@@ -18,7 +18,8 @@ public class FifthSolutionSlidingWindow {
     }
 
     public static int[] twoSum(int[] nums, int target) {
-        int [] result = new int[2]; // The resulting array can contain only two elements
+        int [] result = new int[2];
+        // The resulting array can contain only two elements
         int [][] numsAndIndex = new int[nums.length][2];
 
         for(int inputIndex = 0; inputIndex < nums.length; inputIndex++){
