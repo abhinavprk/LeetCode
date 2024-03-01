@@ -7,6 +7,11 @@ public class Solution1 {
         if ((list1 == null) && (list2 == null)) {
             return null;
         }
+        if (list1 == null) {
+            return list2;
+        } else if (list2 == null) {
+            return list1;
+        }
         ListNode merged = new ListNode();
         ListNode mergedNode = merged;
         while ((list1 != null) && (list2 != null)) {
