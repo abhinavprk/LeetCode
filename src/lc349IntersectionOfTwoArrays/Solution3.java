@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Solution1 {
+public class Solution3 {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(intersection(new int[]{1,2,2,1}, new int[]{2,2})));
@@ -20,12 +20,11 @@ public class Solution1 {
         for (int val : nums1) {
             num1HashSet.add(val);
         }
-        Set<Integer> resultHashSet = new HashSet<>();
+        Set<Integer> num2HashSet = new HashSet<>();
         for (int val : nums2) {
-            if (num1HashSet.contains(val)) {
-                resultHashSet.add(val);
-            }
+            num2HashSet.add(val);
         }
-       return resultHashSet.stream().mapToInt(a->a).toArray();
+        num1HashSet.retainAll(num2HashSet);
+        return  num1HashSet.stream().mapToInt(a-> a).toArray();
     }
 }
