@@ -34,7 +34,7 @@ public class Solution3 {
         int score = 0;
         Arrays.sort(tokens);
         Deque<Integer> deque = new LinkedList<>();
-        for (int val : tokens) {
+        for (int val: tokens){
             deque.add(val);
         }
         while (!deque.isEmpty()) {
