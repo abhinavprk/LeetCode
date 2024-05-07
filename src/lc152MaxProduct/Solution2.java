@@ -9,11 +9,11 @@ public class Solution2 {
         System.out.println(maxProduct(new int[]{-2}));
         System.out.println(maxProduct(new int[]{0, 2}));
         System.out.println(maxProduct(new int[]{-3, 0, 1, -2}));
+
     }
 
     private static int maxProduct(int[] nums) {
-        int n = nums.length; //size of array.
-
+        int n = nums.length;
         int pre = 1, suff = 1;
         int maxProduct = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
