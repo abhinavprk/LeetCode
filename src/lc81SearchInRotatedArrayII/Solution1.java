@@ -1,28 +1,32 @@
-package lc33SearchInRotatedSortedArray;
+package lc81SearchInRotatedArrayII;
 
 public class Solution1 {
     public static void main(String[] args) {
-        System.out.println(search(new int[]{5, 1, 3}, 5));
-        System.out.println(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
-        System.out.println(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 6));
-        System.out.println(search(new int[]{1}, 0));
+        System.out.println(search(new int[]{3,1}, 1));
+        System.out.println(search(new int[]{1, 0, 1, 1, 1}, 0));
+        System.out.println(search(new int[]{2, 5, 6, 0, 0, 1, 2}, 3));
+        System.out.println(search(new int[]{2, 5, 6, 0, 0, 1, 2}, 0));
     }
 
-    private static int search(int[] nums, int target) {
-        int result = -1;
+    private static boolean search(int[] nums, int target) {
+        boolean result = false;
         int low = 0;
         int high = nums.length - 1;
         while (low <= high) {
             int mid = low + (high - low) / 2;
             int midVal = nums[mid];
             if (midVal == target) {
-                result = mid;
+                result = true;
                 break;
-            } else if (midVal >= nums[low]) {
+            } else if((nums[low]==midVal) && (nums[high]==midVal)) {
+                //If low, mid, and high are equal, we can ignore those values
+                high = high - 1;
+                low = low + 1;
+            }else if (midVal >= nums[low]) {
                 //This means that the elements in the left are sorted
                 if ((nums[low] <= target) && (target < midVal)) {
-                    //target is grater than the lower boundary, and smaller than midVal
-                    // element exists in the left subarray
+                    //target is greater than the lower boundary, and smaller than midVal
+                    //element exists in the left subarray
                     high = mid - 1;
                 } else {
                     // element exist in the right subarray
