@@ -17,6 +17,10 @@ public class Solution2 {
             if (mid % 2 == 1) {
                 mid--;
             }
+            // The elements in the array are in pair like 0-1 2-3 4-5 until a single element is found
+            // 0-1 2-3 4-5 6 7-8 9-10
+            //mid is and even index, if its value is equal to the value at mid+1 this means that
+            //the index of single element is after mid, else before mid.
             if (nums[mid] == nums[mid + 1]) {
                 lo = mid + 2;
             } else {
