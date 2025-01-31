@@ -10,6 +10,7 @@ public class Solution6 {
     private static int missingNumber(int[] input) {
         int diff = 0;
         for (int i = 0; i < input.length; i++) {
+            //diff between sum of values and the sum of available indices gives the missing data
             diff = diff + input[i] - i ;
         }
         return input.length - diff;
